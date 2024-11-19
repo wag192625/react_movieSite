@@ -14,14 +14,14 @@ export default function MoviesDetail() {
     async function showMovieDetail() {
       try {
         const movieDetailData = await useTmdbApi.getMovieDetail(movieId.id);
-        const movieReviews = await useTmdbApi.getMovieDetail(`${movieId.id}/reviews`);
+        const reviews = await useTmdbApi.getMovieDetail(`${movieId.id}/reviews`);
 
         // 영화의 데이터 state로 저장
         setmovieDetail(movieDetailData);
-        setmovieReview(movieReviews);
+        setmovieReview(reviews.results);
 
         console.log('무비디테일', movieDetailData);
-        console.log('무비리뷰', movieReviews);
+        console.log('무비리뷰', movieReview);
       } catch (err) {
         console.error(err);
       }
@@ -41,7 +41,28 @@ export default function MoviesDetail() {
         </div>
         <div>
           <h2>영화 리뷰</h2>
-          {/* <div><p>{movieReviews?.}</p></div> */}
+          <ul>
+            {movieReview.map((review) => {
+              const { id, author, content, updated_at } = review;
+              return (
+                <li
+                  key={id}
+                  style={{
+                    justifyContent: 'flex-start',
+                    textAlign: 'left',
+                    listStyle: 'none ',
+                    // padding: '10 0',
+                    margin: '10px 0',
+                  }}
+                >
+                  <div>id : {author}</div>
+                  <div>내용 : {content}</div>
+                  <div>작성일자 : {updated_at}</div>
+                </li>
+              );
+            })}
+          </ul>
+          {/* <div><p>{movieReview?.}</p></div> */}
         </div>
       </div>
     </>
