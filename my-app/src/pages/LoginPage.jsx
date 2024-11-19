@@ -17,9 +17,9 @@ export default function LoginPage() {
       <input type="text" />
       <button
         onClick={() => {
-          dispatch(login);
+          dispatch(login());
           console.log(loginState);
-          // navigate('/');
+          navigate('/');
         }}
       >
         로그인

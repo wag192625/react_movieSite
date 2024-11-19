@@ -31,7 +31,7 @@ export default function Header() {
         ) : (
           <button
             onClick={() => {
-              dispatch(logout());
+              dispatch(logout);
             }}
           >
             로그아웃
