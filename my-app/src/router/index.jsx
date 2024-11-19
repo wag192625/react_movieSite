@@ -3,6 +3,7 @@ import RootLayout from '../RootLayout';
 import MainPage from '../pages/MainPage';
 import MovieList from '../pages/MovieList';
 import MoviesDetail from '../pages/MoviesDetail';
+import LoginPage from '../pages/LoginPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/movieList/:id',
         element: <MoviesDetail />,
+      },
+      {
+        path: '/loginPage',
+        element: <LoginPage></LoginPage>,
       },
     ],
   },

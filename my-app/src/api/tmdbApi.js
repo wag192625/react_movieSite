@@ -1,4 +1,4 @@
-// import axios from 'axios';
-import api from './axios';
+// // import axios from 'axios';
+// import api from './axios';
 
-export default tmdbApi;
+// export default tmdbApi;

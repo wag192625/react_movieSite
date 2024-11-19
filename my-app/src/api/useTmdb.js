@@ -9,12 +9,11 @@ const useTmdbApi = {
   },
 
   getMovieDetail: async (movie_id) => {
-    const response = await api.get(movie_id);
+    const response = await api.get(`/${movie_id}`);
     const movieDetail = response.data;
-
-    return movies.results;
+    // return response
+    return movieDetail;
   },
-  
 };
 
 export default useTmdbApi;
