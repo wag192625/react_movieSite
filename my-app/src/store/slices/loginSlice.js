@@ -25,6 +25,6 @@ const loginSlice = createSlice({
 });
 
 export const { login, logout } = loginSlice.actions;
-export const { addBookmark } = loginSlice.actions;
+export const { addBookmark, deleteBookmark } = loginSlice.actions;
 
 export default loginSlice.reducer;

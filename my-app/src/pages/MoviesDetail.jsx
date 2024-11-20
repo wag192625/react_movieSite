@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import tmdbApi from '../api/tmdbApi';
 import { useDispatch, useSelector } from 'react-redux';
-import { addBookmark } from '../store/slices/loginSlice';
+import { addBookmark, deleteBookmark } from '../store/slices/loginSlice';
 
 export default function MoviesDetail() {
   const { loginState } = useSelector((state) => state.logState);
@@ -16,7 +16,7 @@ export default function MoviesDetail() {
   const [movieDetail, setmovieDetail] = useState([]);
   const [movieReview, setmovieReview] = useState([]);
   // const [addMovieId, setAddMovieId] = useState({ movieId: '' });
-  const [addMovieId, setAddMovieId] = useState();
+  const [bookMarkId, setBookMarkId] = useState([]);
 
   // console.log('로그', tmdbApi.getMovieDetail(movieObj));
   useEffect(() => {
@@ -29,7 +29,7 @@ export default function MoviesDetail() {
         setmovieDetail(movieDetailData);
         setmovieReview(reviews.results);
 
-        setAddMovieId(movieObj.id); // 북마크용 id 추출
+        setBookMarkId(movieObj.id); // 북마크용 id 추출
       } catch (err) {
         console.error(err);
       }
@@ -51,17 +51,16 @@ export default function MoviesDetail() {
             <h1>{movieDetail?.title}</h1>
 
             <button
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault;
                 if (loginState) {
-                  // if (bookMark.movieId in addMovieId) {
-                  if (bookMark in addMovieId) {
-                    alert('이미 북마크입니다.');
-                    // console.log('북마크', bookMark);
-
-                    dispatch();
+                  // if (bookMark.movieId in bookMarkId) {
+                  if (bookMark.includes(bookMarkId)) {
+                    console.log('제거 북마크', bookMark);
+                    alert('제거되었습니다.');
+                    dispatch(deleteBookmark(bookMarkId));
                   } else {
-                    dispatch(addBookmark(addMovieId));
-                    console.log('북마크', bookMark);
+                    dispatch(addBookmark(bookMarkId));
                   }
                 } else {
                   alert('로그인이 필요합니다.') /*navigete('./loginPage')*/;
@@ -70,6 +69,7 @@ export default function MoviesDetail() {
             >
               북마크
             </button>
+
             <p>{movieDetail?.overview}</p>
           </div>
         </div>
