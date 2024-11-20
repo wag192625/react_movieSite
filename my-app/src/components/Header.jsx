@@ -25,13 +25,13 @@ export default function Header() {
         </Link>
         <button onClick={() => console.log(loginState)}>출력</button>
         {!loginState ? (
-          <Link to={'/LoginPage'}>
+          <Link to={'/loginPage'}>
             <button>로그인</button>
           </Link>
         ) : (
           <button
             onClick={() => {
-              dispatch(logout);
+              dispatch(logout());
             }}
           >
             로그아웃

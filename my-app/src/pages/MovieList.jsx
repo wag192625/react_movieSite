@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 // import useTmdb from '../api/useTmdb'
-import useTmdbApi from '../api/useTmdb';
+import tmdbApi from '../api/tmdbApi';
 
 export default function MovieList() {
   const navigete = useNavigate();
@@ -10,7 +10,7 @@ export default function MovieList() {
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const data = await useTmdbApi.getMovie();
+        const data = await tmdbApi.getMovie();
         // 영화의 데이터 state로 저장
         console.log(data);
         setMovies(data);

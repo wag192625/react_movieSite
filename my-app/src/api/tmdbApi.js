@@ -1,4 +1,19 @@
-// // import axios from 'axios';
-// import api from './axios';
+// import tmdbApi from './tmdbApi';
+import api from './axios';
+const tmdbApi = {
+  getMovie: async () => {
+    const response = await api.get('now_playing');
+    const movies = response.data;
 
-// export default tmdbApi;
+    return movies.results;
+  },
+
+  getMovieDetail: async (movie_id) => {
+    const response = await api.get(`/${movie_id}`);
+    const movieDetail = response.data;
+    // return response
+    return movieDetail;
+  },
+};
+
+export default tmdbApi;
