@@ -20,6 +20,12 @@ const tmdbApi = {
     // return response
     return bookmarks;
   },
+  getCategory: async (el) => {
+    const response = await api.get(`${el}`);
+    const movies = response.data;
+
+    return movies.results;
+  },
 };
 
 export default tmdbApi;

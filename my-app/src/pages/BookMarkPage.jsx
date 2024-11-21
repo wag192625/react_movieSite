@@ -28,24 +28,6 @@ export default function BookMarkPage() {
     fetchBookMark();
   }, []);
 
-  // useEffect(() => {
-  //   function fetchBookMark() {
-  //     let newArray = [];
-  //     bookMark.forEach(async (book) => {
-  //       try {
-  //         // baseURL : https://api.themoviedb.org/3/movie
-  //         const data = await tmdbApi.getBookMark(`${book}`);
-  //         //map 쓸거임
-  //         newArray.push(data);
-  //       } catch (err) {
-  //         console.error(err);
-  //       }
-  //     });
-  //     setBookMarkList(newArray);
-  //   }
-  //   fetchBookMark();
-  // }, []);
-
   return (
     <>
       <div>bookMarPage</div>
@@ -72,3 +54,21 @@ export default function BookMarkPage() {
     </>
   );
 }
+
+// useEffect(() => {
+//   function fetchBookMark() {
+//     let newArray = [];
+//     bookMark.forEach(async (book) => {
+//       try {
+//         // baseURL : https://api.themoviedb.org/3/movie
+//         const data = await tmdbApi.getBookMark(`${book}`);
+//         //map 쓸거임
+//         newArray.push(data);
+//       } catch (err) {
+//         console.error(err);
+//       }
+//     });
+//     setBookMarkList(newArray);
+//   }
+//   fetchBookMark();
+// }, []);

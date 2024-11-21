@@ -1,11 +1,11 @@
 import React from 'react';
-import MovieList from './MovieList';
+import Movie from './Movie';
 export default function Main() {
   const categorys = ['now_playing', 'popular', 'top_rated', 'upcoming'];
 
-  // const movieLists = categorys.map((el) => {
+  // const movies = categorys.map((el) => {
   //   console.log('카테고리 = ', el);
-  //   return <MovieList key={el} category={el}></MovieList>;
+  //   return <Movie key={el} category={el}></Movie>;
   // });
 
   return (
@@ -13,10 +13,9 @@ export default function Main() {
       <div>Main</div>
       {categorys.map((el) => {
         console.log('카테고리 = ', el);
-        return <MovieList key={el} category={el}></MovieList>;
+        return <Movie key={el} category={el}></Movie>;
       })}
-      {/* <div>{movieLists}</div> */}
-
+      {/* <div>{movies}</div> */}
     </div>
   );
 }
