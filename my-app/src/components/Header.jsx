@@ -37,7 +37,12 @@ export default function Header() {
             로그아웃
           </button>
         )}
-        {loginState && <button> 마이페이지 </button>}
+
+        {loginState && (
+          <Link to={'/myPage'}>
+            <button> 마이페이지 </button>
+          </Link>
+        )}
       </div>
       {/* <Link to="/">홈</Link> */}
     </>

@@ -5,6 +5,7 @@ import MovieList from '../pages/MovieList';
 import MoviesDetail from '../pages/MoviesDetail';
 import LoginPage from '../pages/LoginPage';
 import BookMarkPage from '../pages/bookMarkPage';
+import MyPage from '../pages/MyPage';
 
 const router = createBrowserRouter([
   {
@@ -35,8 +36,14 @@ const router = createBrowserRouter([
         element: <LoginPage></LoginPage>,
       },
       {
-        path: '/bookMarkPage',
-        element: <BookMarkPage></BookMarkPage>,
+        path: '/myPage',
+        element: <MyPage></MyPage>,
+        children: [
+          {
+            path: '/myPage/bookMarkPage',
+            element: <BookMarkPage></BookMarkPage>,
+          },
+        ],
       },
     ],
   },
