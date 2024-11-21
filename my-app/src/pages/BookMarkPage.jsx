@@ -56,9 +56,13 @@ export default function BookMarkPage() {
             <li key={id}>
               <p>{title}</p>
               <div style={{ width: '200px', height: '200px' }}>
-                <img src={'https://image.tmdb.org/t/p/w500' + poster_path} alt="오류" />
+                <img
+                  src={'https://image.tmdb.org/t/p/w500' + poster_path}
+                  alt="오류"
+                  style={{ width: '100px', height: '100px' }}
+                />
               </div>
-              <Link to={`/moviList/${id}`}>
+              <Link to={`/movieList/${id}`}>
                 <h3>{title}</h3>
               </Link>
             </li>

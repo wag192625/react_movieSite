@@ -3,17 +3,19 @@ import { Link, useNavigate } from 'react-router-dom';
 // import useTmdb from '../api/useTmdb'
 import tmdbApi from '../api/tmdbApi';
 
-export default function MovieList() {
+export default function MovieList({ category }) {
   const navigete = useNavigate();
   const [movies, setMovies] = useState([]);
+  // console.log('카테고리', category);
 
   useEffect(() => {
     async function fetchMovie() {
       try {
-        const data = await tmdbApi.getMovie();
+        const data = await tmdbApi.getMovie(category);
         // 영화의 데이터 state로 저장
+        const newData = data.slice(0, 8);
         console.log(data);
-        setMovies(data);
+        setMovies(newData);
       } catch (err) {
         console.error(err);
         // console.log('에러발생')
@@ -25,8 +27,7 @@ export default function MovieList() {
   return (
     <>
       <div>
-        <a href="">Now Playing </a>
-
+        <a href="">{category} </a>
         <ul style={{ display: 'flex' }}>
           {movies.map((movie) => {
             const { id, title, poster_path } = movie;

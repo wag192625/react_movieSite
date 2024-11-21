@@ -1,8 +1,8 @@
 // import tmdbApi from './tmdbApi';
 import api from './axios';
 const tmdbApi = {
-  getMovie: async () => {
-    const response = await api.get('now_playing');
+  getMovie: async (el) => {
+    const response = await api.get(`/${el}`);
     const movies = response.data;
 
     return movies.results;
