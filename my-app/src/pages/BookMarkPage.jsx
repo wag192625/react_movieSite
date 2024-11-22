@@ -44,7 +44,7 @@ export default function BookMarkPage() {
                   style={{ width: '100px', height: '100px' }}
                 />
               </div>
-              <Link to={`/movieList/${id}`}>
+              <Link to={`/movie/${id}`}>
                 <h3>{title}</h3>
               </Link>
             </li>

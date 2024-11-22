@@ -22,7 +22,7 @@ export default function MoreMoviePage() {
       }
     }
     fetchMovie();
-  });
+  },[]);
   return (
     <>
       <div>

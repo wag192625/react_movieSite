@@ -26,6 +26,7 @@ const tmdbApi = {
 
     return movies.results;
   },
+
 };
 
 export default tmdbApi;
