@@ -40,11 +40,11 @@ export default function Movie({ category }) {
                 <div style={{ width: '150px', textAlign: 'center', alignContent: 'center' }}>
                   {/* {console.log('https://image.tmdb.org/t/p/w500' + poster_path)} */}
                   <Link to={`/movie/${id}`}>
-                  <img
-                    src={'https://image.tmdb.org/t/p/w500' + poster_path}
-                    alt="오류"
-                    style={{ width: '100px' }}
-                  />
+                    <img
+                      src={'https://image.tmdb.org/t/p/w500' + poster_path}
+                      alt="오류"
+                      style={{ width: '100px' }}
+                    />
                     <h3>{title}</h3>
                   </Link>
                 </div>

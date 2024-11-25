@@ -14,19 +14,22 @@ const tmdbApi = {
     // return response
     return movieDetail;
   },
+
+  // 위랑 동일한 코드
   getBookMark: async (movie_id) => {
     const response = await api.get(`/${movie_id}`);
     const bookmarks = response.data;
     // return response
     return bookmarks;
   },
+
+  // 첫번째랑 동일한 코드
   getCategory: async (el) => {
     const response = await api.get(`${el}`);
     const movies = response.data;
 
     return movies.results;
   },
-
 };
 
 export default tmdbApi;

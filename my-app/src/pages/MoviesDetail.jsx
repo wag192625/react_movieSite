@@ -74,6 +74,13 @@ export default function MoviesDetail() {
             >
               북마크
             </button>
+            {/* {if (loginState) {
+              // 로그인이 되어있으면 북마크 가능
+                // 북마크가 안 되어있으면 북마크
+                // 북마크가 되어있으면 북마크 해제 및 북마크 해제됨
+              // 로그인이 안 되어있으면 로그인 페이지로 이동
+              // 로그인
+            } } */}
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
               {credit.map((el) => {
                 const { name, profile_path, character } = el;
@@ -90,7 +97,7 @@ export default function MoviesDetail() {
                 );
               })}
             </div>
-
+            <h3>줄거리</h3>
             <p>{movieDetail?.overview}</p>
           </div>
         </div>
