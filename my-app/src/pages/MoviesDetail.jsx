@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addBookmark, deleteBookmark } from '../store/slices/loginSlice';
 
 export default function MoviesDetail() {
-  const { loginState } = useSelector((state) => state.logState);
-  const { bookMark } = useSelector((state) => state.logState);
+  const { loginState, bookMark } = useSelector((state) => state.logState);
+  // const { bookMark } = useSelector((state) => state.logState);
   const dispatch = useDispatch();
-  const navigete = useNavigate;
+  const navigate = useNavigate();
 
-  const movieObj = useParams();
-  // console.log('타입', typeof movieObj.id);
+  const { id: movieId } = useParams();
+  // console.log('타입', typeof movieId.id);
+  console.log(movieId);
 
   const [movieDetail, setmovieDetail] = useState([]);
   const [movieReview, setmovieReview] = useState([]);
@@ -19,21 +20,21 @@ export default function MoviesDetail() {
   const [bookMarkId, setBookMarkId] = useState([]);
   const [credit, setCredit] = useState([]); // 출연진
 
-  // console.log('로그', tmdbApi.getMovieDetail(movieObj));
+  // console.log('로그', tmdbApi.getMovieDetail(movieId));
   useEffect(() => {
     async function showMovieDetail() {
       try {
-        const movieDetailData = await tmdbApi.getMovieDetail(movieObj.id);
-        const reviews = await tmdbApi.getMovieDetail(`${movieObj.id}/reviews`);
+        const movieDetailData = await tmdbApi.getMovieDetail(movieId);
+        const reviews = await tmdbApi.getMovieDetail(`${movieId}/reviews`);
         // 영화의 데이터 state로 저장
         setmovieDetail(movieDetailData);
         setmovieReview(reviews.results);
 
-        const credit = await tmdbApi.getMovieDetail(`${movieObj.id}/credits`);
+        const credit = await tmdbApi.getMovieDetail(`${movieId}/credits`);
         const newCredit = credit.cast;
         setCredit(newCredit.slice(0, 6));
 
-        setBookMarkId(movieObj.id); // 북마크용 id 추출
+        setBookMarkId(movieId); // 북마크용 id 추출
       } catch (err) {
         console.error(err);
       }
@@ -43,9 +44,6 @@ export default function MoviesDetail() {
 
   console.log('전체 북마크', bookMark);
 
-  // console.log('무비디테일', movieDetail);
-  // console.log('무비리뷰', movieReview);
-  // console.log('무비아이디', addMovieId);
   return (
     <>
       {console.log('크레딧', credit)}
@@ -58,6 +56,7 @@ export default function MoviesDetail() {
             <button
               onClick={() => {
                 // e.preventDefault;
+
                 if (loginState) {
                   // if (bookMark.movieId in bookMarkId) {
                   if (bookMark.includes(bookMarkId)) {
@@ -68,24 +67,25 @@ export default function MoviesDetail() {
                     dispatch(addBookmark(bookMarkId));
                   }
                 } else {
-                  alert('로그인이 필요합니다.') /*navigete('./loginPage')*/;
+                  alert('로그인이 필요합니다.');
+                  navigate('/loginPage');
                 }
               }}
             >
-              북마크
+              {bookMark.includes(bookMarkId) ? '북마크 해제' : '북마크'}
             </button>
-            {/* {if (loginState) {
+            {
               // 로그인이 되어있으면 북마크 가능
-                // 북마크가 안 되어있으면 북마크
-                // 북마크가 되어있으면 북마크 해제 및 북마크 해제됨
+              // 북마크가 안 되어있으면 북마크
+              // 북마크가 되어있으면 북마크 해제 및 북마크 해제됨
               // 로그인이 안 되어있으면 로그인 페이지로 이동
               // 로그인
-            } } */}
+            }
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>
               {credit.map((el) => {
                 const { name, profile_path, character } = el;
                 return (
-                  <div>
+                  <div key={el.name}>
                     <img
                       src={'https://image.tmdb.org/t/p/w400' + profile_path}
                       alt=""

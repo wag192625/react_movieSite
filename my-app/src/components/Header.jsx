@@ -23,7 +23,10 @@ export default function Header() {
         <Link to={'/'}>
           <h2>Header</h2>
         </Link>
-        <button onClick={() => console.log(loginState)}>출력</button>
+        {/* <button onClick={() => console.log(loginState)}>출력</button> */}
+        # 
+        <input type="text" />
+
         {!loginState ? (
           <Link to={'/loginPage'}>
             <button>로그인</button>
