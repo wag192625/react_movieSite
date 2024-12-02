@@ -20,9 +20,6 @@ export default function Header() {
 
   function searchText(e) {
     e.preventDefault();
-    // const data = formData;
-    console.log('검색값', formData);
-    console.log('검색 타입', typeof formData);
     navigate(`/search/movie/${formData}`);
   }
 
@@ -46,11 +43,11 @@ export default function Header() {
         
         
         
-        
+        // 
         */}
-        {/* <button onClick={() => console.log(loginState)}>출력</button> */}
-        {/* input에 값을 넣고 검색 버튼을 누르면
-            창이 바뀌면서 검색 결과를 내보냄 */}
+        {/*  <button onClick={() => console.log(loginState)}>출력</button> */}
+        {/* // ! input에 값을 넣고 검색 버튼을 누르면
+            // ! 창이 바뀌면서 검색 결과를 내보냄 */}
         <form onSubmit={searchText}>
           <input type="text" onChange={handleChange} />
           <button type="submit"> 검색 </button>

@@ -18,7 +18,8 @@ const tmdbApi = {
   },
 
   getSearchData: async (el) => {
-    const response = await api.get(`search/movie/${el}`);
+    // const response = await searchApi.get(`${el}`);
+    const response = await searchApi.get(`search/movie?query=${el}`);
     const data = response.data;
     return data.results;
   },
