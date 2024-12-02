@@ -1,5 +1,5 @@
 import React from 'react';
-import BookMarkPage from './bookMarkPage';
+import BookMarkPage from './BookMarkPage';
 export default function MyPage() {
   return (
     <>

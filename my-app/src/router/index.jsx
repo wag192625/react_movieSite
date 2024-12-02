@@ -4,9 +4,11 @@ import MainPage from '../pages/MainPage';
 import Movie from '../pages/Movie';
 import MoviesDetail from '../pages/MoviesDetail';
 import LoginPage from '../pages/LoginPage';
-import BookMarkPage from '../pages/bookMarkPage';
+import BookMarkPage from '../pages/BookMarkPage';
 import MyPage from '../pages/MyPage';
 import MoreMoviePage from '../pages/MoreMoviePage';
+import SearchPage from '../pages/SearchPage';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
             element: <BookMarkPage></BookMarkPage>,
           },
         ],
+      },
+      {
+        path: '/search/movie/:text',
+        element: <SearchPage></SearchPage>,
       },
     ],
   },

@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import tmdbApi from '../api/tmdbApi';
+import { useEffect } from 'react';
 
-// export default function MoreMoviePage(category) {
-export default function MoreMoviePage() {
-  const { category } = useParams();
-
-  const [movies, setMovies] = useState([]);
-
-  // console.log(`카테고리 타입:`, typeof category);
-  // console.log('카테고리', category);
-
+export default function SearchPage({ searchText }) {
+  const [searchData, setSearchData] = useState([]);
   useEffect(() => {
+    // 비동기로 데이터를 가져옴
     async function fetchMovie() {
       try {
-        const data = await tmdbApi.getMovieResult(category);
-        setMovies(data);
-        console.log(data);
+        const data = await tmdbApi.getSearchData(searchText);
+        // 영화의 데이터 state로 저장
+        setSearchData(data);
       } catch (err) {
-        console.error(err);
+        console.error('오류 내용', err);
       }
     }
     fetchMovie();
   }, []);
+
   return (
     <>
       <div>
-        <ul style={{ display: 'flex', flexWrap: 'wrap' }}>
-          {movies.map((movie) => {
+        <ul style={{ display: 'flex' }}>
+          {searchData.map((movie) => {
             const { id, title, poster_path } = movie;
             return (
               <li key={id} style={{ listStyle: 'none' }}>
@@ -46,6 +41,7 @@ export default function MoreMoviePage() {
           })}
         </ul>
       </div>
+      ;
     </>
   );
 }

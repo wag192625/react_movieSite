@@ -24,13 +24,13 @@ export default function MoviesDetail() {
   useEffect(() => {
     async function showMovieDetail() {
       try {
-        const movieDetailData = await tmdbApi.getMovieDetail(movieId);
-        const reviews = await tmdbApi.getMovieDetail(`${movieId}/reviews`);
+        const movieDetailData = await tmdbApi.getMovieData(movieId);
+        const reviews = await tmdbApi.getMovieData(`${movieId}/reviews`);
         // 영화의 데이터 state로 저장
         setmovieDetail(movieDetailData);
         setmovieReview(reviews.results);
 
-        const credit = await tmdbApi.getMovieDetail(`${movieId}/credits`);
+        const credit = await tmdbApi.getMovieData(`${movieId}/credits`);
         const newCredit = credit.cast;
         setCredit(newCredit.slice(0, 6));
 

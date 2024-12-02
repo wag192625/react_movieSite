@@ -14,7 +14,7 @@ export default function BookMarkPage() {
         // 비동기 요청을 모두 처리하고 결과를 배열로 반환
         const newArray = await Promise.all(
           bookMark.map(async (book) => {
-            const data = await tmdbApi.getBookMark(`${book}`);
+            const data = await tmdbApi.getMovieData(`${book}`);
             return data;
           })
         );
@@ -61,7 +61,7 @@ export default function BookMarkPage() {
 //     bookMark.forEach(async (book) => {
 //       try {
 //         // baseURL : https://api.themoviedb.org/3/movie
-//         const data = await tmdbApi.getBookMark(`${book}`);
+//         const data = await tmdbApi.getMovieData(`${book}`);
 //         //map 쓸거임
 //         newArray.push(data);
 //       } catch (err) {
